@@ -1,0 +1,8 @@
+{
+  "name": "browser-extension-bundled-with-vite-example",
+  "version": "0.0.0",
+  "description": "Showcase how to exclude some dynamic code for browser extensions using vite",
+  "main": "src/index.ts",
+  "author": "DynamicLabs",
+  "license": "ISC"
+}

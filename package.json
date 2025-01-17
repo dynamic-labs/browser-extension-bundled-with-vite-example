@@ -2,7 +2,23 @@
   "name": "browser-extension-bundled-with-vite-example",
   "version": "0.0.0",
   "description": "Showcase how to exclude some dynamic code for browser extensions using vite",
-  "main": "src/index.ts",
+  "main": "src/index.tsx",
   "author": "DynamicLabs",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "build": "rm -rf dist && vite build",
+    "test": "npm run build && npm run test:apple-cdn",
+    "test:apple-cdn": "if grep -q 'https://appleid.cdn-apple.com' dist/index.js; then echo -e '\\033[31merror: Final bundle does contain Apple CDN code\\033[0m'; exit 1; else echo -e '\\033[32msuccess: Final bundle does not contain Apple CDN code\\033[0m'; exit 0; fi"
+  },
+  "dependencies": {
+    "@dynamic-labs/sdk-react-core": "^4.2.3",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@types/react": "^18.3.18",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7"
+  }
 }
